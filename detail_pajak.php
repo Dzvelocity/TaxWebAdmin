@@ -42,7 +42,7 @@ if (isset($_GET['id'])) {
 <p><strong>Nominal Tagihan:</strong> Rp <?php echo number_format($detail['bill_amount'], 0, ',', '.'); ?></p>
 
 <form action="list_pajak.php" method="post">
-    <input type="submit" value="Kembali">
+    <input type="submit" value="Kembali ke Home">
 </form>
 
 </body>

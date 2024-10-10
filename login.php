@@ -1,6 +1,8 @@
 <?php
 session_start();
-include 'db.php'; 
+include 'db.php';
+
+$error_message = ""; 
 
 if (isset($_POST['login'])) {
     $username = $_POST['username'];
@@ -14,7 +16,7 @@ if (isset($_POST['login'])) {
         header('Location: list_pajak.php');
         exit();
     } else {
-        echo "Username atau password salah.";
+        $error_message = "Username atau password salah.";
     }
 }
 ?>
@@ -28,4 +30,9 @@ if (isset($_POST['login'])) {
             <button type="button">Register</button>
         </a>
     </div>
+    <?php
+    if (!empty($error_message)) {
+        echo "<p style='color: red;'>$error_message</p>";
+    }
+    ?>
 </form>

@@ -25,6 +25,7 @@ $result = $conn->query($sql);
         <th>Nama</th>
         <th>Nomor Plat</th>
         <th>Jenis Kendaraan</th>
+        <th>No HP</th>
         <th>Jatuh Tempo</th>
         <th>Nominal Tagihan</th>
         <th>Detail</th>
@@ -36,6 +37,7 @@ $result = $conn->query($sql);
             echo "<td>" . $row['name'] . "</td>";
             echo "<td>" . $row['plate_number'] . "</td>";
             echo "<td>" . $row['vehicle_type'] . "</td>";
+            echo "<td>" . $row['phone_number'] . "</td>";
             echo "<td>" . $row['due_date'] . "</td>";
             echo "<td>Rp " . $row['bill_amount'] . "</td>";
             echo "<td><a href='detail_pajak.php?id=" . $row['id'] . "'>Detail</a></td>";
