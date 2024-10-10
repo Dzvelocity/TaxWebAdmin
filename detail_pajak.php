@@ -1,18 +1,15 @@
 <?php
 session_start();
-include 'db.php'; // Koneksi ke database
+include 'db.php'; 
 
-// Cek apakah pengguna sudah login
 if (!isset($_SESSION['user'])) {
     header('Location: login.php');
     exit();
 }
 
-// Cek apakah ada ID yang dikirimkan
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 
-    // Ambil data pajak kendaraan berdasarkan ID
     $sql = "SELECT * FROM pajak_kendaraan WHERE id='$id'";
     $result = $conn->query($sql);
 
@@ -44,7 +41,6 @@ if (isset($_GET['id'])) {
 <p><strong>Jatuh Tempo:</strong> <?php echo $detail['due_date']; ?></p>
 <p><strong>Nominal Tagihan:</strong> Rp <?php echo number_format($detail['bill_amount'], 0, ',', '.'); ?></p>
 
-<!-- Tombol untuk kembali ke list pajak -->
 <form action="list_pajak.php" method="post">
     <input type="submit" value="Kembali">
 </form>

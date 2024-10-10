@@ -1,14 +1,12 @@
 <?php
 session_start();
-include 'db.php'; // Koneksi ke database
+include 'db.php'; 
 
-// Cek apakah pengguna sudah login
 if (!isset($_SESSION['user'])) {
     header('Location: login.php');
     exit();
 }
 
-// Menampilkan data pajak kendaraan
 $sql = "SELECT * FROM pajak_kendaraan";
 $result = $conn->query($sql);
 ?>
@@ -22,7 +20,6 @@ $result = $conn->query($sql);
 
 <h2>List Pajak Kendaraan</h2>
 
-<!-- Tabel yang menampilkan data pajak kendaraan -->
 <table border="1">
     <tr>
         <th>Nama</th>
@@ -34,7 +31,6 @@ $result = $conn->query($sql);
     </tr>
     <?php
     if ($result->num_rows > 0) {
-        // Menampilkan data dalam tabel
         while($row = $result->fetch_assoc()) {
             echo "<tr>";
             echo "<td>" . $row['name'] . "</td>";
@@ -42,7 +38,6 @@ $result = $conn->query($sql);
             echo "<td>" . $row['vehicle_type'] . "</td>";
             echo "<td>" . $row['due_date'] . "</td>";
             echo "<td>Rp " . $row['bill_amount'] . "</td>";
-            // Tombol untuk menampilkan detail di halaman baru
             echo "<td><a href='detail_pajak.php?id=" . $row['id'] . "'>Detail</a></td>";
             echo "</tr>";
         }
@@ -52,7 +47,6 @@ $result = $conn->query($sql);
     ?>
 </table>
 
-<!-- Tombol Logout -->
 <br><br>
 <form method="post" action="logout.php">
     <input type="submit" name="logout" value="Logout">
